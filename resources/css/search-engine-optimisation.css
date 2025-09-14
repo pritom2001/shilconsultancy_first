@@ -1,0 +1,46 @@
+  @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #1a73e8 }
+        }
+        .typing-animation {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #1a73e8;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        .search-box {
+            box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+        }
+        .search-box:focus-within {
+            box-shadow: 0 2px 8px 1px rgba(64,60,67,.24);
+        }
+        .result-card:hover {
+            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+        }
+        .nav-item:hover {
+            color: #1a73e8;
+            border-bottom: 3px solid #1a73e8;
+        }
+        .nav-item.active {
+            color: #1a73e8;
+            border-bottom: 3px solid #1a73e8;
+        }
+        .pagination-btn:hover {
+            background-color: #f8f9fa;
+        }
+        @media (max-width: 640px) {
+            .search-container {
+                width: 90%;
+            }
+        }
+        section {
+            padding-top: 80px; 
+            margin-top: -80px;
+        }

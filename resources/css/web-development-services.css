@@ -1,0 +1,176 @@
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient 8s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            overflow-x: hidden;
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 10px 0;
+            color: white;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* VS Code Editor Styles */
+        .editor-tab {
+            position: relative;
+            padding: 8px 16px;
+            background-color: #2d2d2d;
+            border-right: 1px solid #1e1e1e;
+            cursor: pointer;
+        }
+        
+        .editor-tab.active {
+            background-color: #1e1e1e;
+            border-top: 1px solid #007acc;
+        }
+        
+        .editor-tab .close {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .editor-tab:hover .close {
+            opacity: 1;
+        }
+        
+        .line-number {
+            color: #858585;
+            text-align: right;
+            padding-right: 16px;
+            user-select: none;
+        }
+        
+        .keyword {
+            color: #569cd6;
+        }
+        
+        .function {
+            color: #dcdcaa;
+        }
+        
+        .string {
+            color: #ce9178;
+        }
+        
+        .comment {
+            color: #6a9955;
+        }
+        
+        .variable {
+            color: #9cdcfe;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background-color: #fff;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .terminal {
+            background-color: #0c0c0c;
+            font-family: 'Fira Code', monospace;
+            border-top: 1px solid #333;
+        }
+        
+        .terminal-prompt {
+            color: #4ec9b0;
+        }
+        
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #fff;
+            animation: blink 1s infinite;
+        }
+        
+        .tech-icon {
+            transition: transform 0.3s;
+        }
+        
+        .tech-icon:hover {
+            transform: translateY(-5px);
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .benefit-card {
+            background-color: #252526;
+            border-left: 3px solid #007acc;
+            transition: all 0.3s;
+        }
+        
+        .benefit-card:hover {
+            background-color: #2a2d2e;
+            transform: translateX(5px);
+        }
+        
+        .editor-content {
+            padding-right: 2rem;
+        }

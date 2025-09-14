@@ -1,0 +1,221 @@
+ .instagram-gradient {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .post-image {
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+        
+        .search-bar {
+            background-color: #efefef;
+        }
+        
+        /* Instagram-like post styling */
+        .post {
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            background: white;
+        }
+        
+        .post-header {
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .post-user {
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-actions {
+            padding: 6px 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .post-actions-left {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .post-likes {
+            padding: 0 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .post-caption {
+            padding: 0 16px;
+            margin-bottom: 8px;
+        }
+        
+        .post-comments {
+            padding: 0 16px;
+            color: #8e8e8e;
+            margin-bottom: 8px;
+        }
+        
+        .post-time {
+            padding: 0 16px;
+            color: #8e8e8e;
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .post-add-comment {
+            border-top: 1px solid #efefef;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-comment-input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            margin: 0 16px;
+            font-size: 14px;
+        }
+        
+        .post-comment-button {
+            color: #0095f6;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        /* Share modal */
+        .share-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .share-modal.active {
+            display: flex;
+        }
+        
+        .share-container {
+            background-color: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .share-header {
+            padding: 16px;
+            border-bottom: 1px solid #dbdbdb;
+            text-align: center;
+            position: relative;
+        }
+        
+        .share-close {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .share-title {
+            font-weight: 600;
+        }
+        
+        .share-options {
+            padding: 16px;
+        }
+        
+        .share-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #efefef;
+        }
+        
+        .share-option:last-child {
+            border-bottom: none;
+        }
+        
+        .share-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #efefef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+        
+        /* Loading spinner */
+        .loading-spinner {
+            display: none;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .loading-spinner.active {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #0095f6;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Touch support for mobile */
+        @media (hover: none) {
+            .story-nav-icon {
+                opacity: 1;
+            }
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            background-color: white;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 10px 0;
+            color: black;
+            text-align: center;
+            /*border-bottom: 1px solid rgba(255, 255, 255, 0.1);*/
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
