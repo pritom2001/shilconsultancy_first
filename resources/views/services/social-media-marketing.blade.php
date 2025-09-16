@@ -138,7 +138,7 @@
             <a href="#" class="text-gray-500"><i class="far fa-plus-square text-2xl"></i></a>
             <a href="#" class="text-gray-500"><i class="far fa-heart text-2xl"></i></a>
             <div class="w-6 h-6 rounded-full bg-gray-300 overflow-hidden">
-                <img src="/Media/favicon/ms-icon-310x310.png" class="w-full h-full object-cover">
+                <img src="{{ asset('images/6.webp')  class="w-full h-full object-cover">
             </div>
         </div>
     </nav>

@@ -31,7 +31,7 @@ class ServiceController extends Controller
         return view('services.brand-strategy');
     }
 
-    public function seo()
+    public function seoAnalysis()
     {
         return view('services.search-engine-optimisation');
     }

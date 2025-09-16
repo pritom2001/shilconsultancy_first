@@ -26,7 +26,7 @@ class PublicBlogController extends Controller
         return view('public_blogs', compact('blogs', 'categories', 'categoryName'));
     }
 
-    public function show(Blog $blog)
+   public function show(Blog $blog)
     {
         $blog->load('comments');
         
@@ -37,6 +37,7 @@ class PublicBlogController extends Controller
             ->selectRaw('category, COUNT(*) as count')
             ->get();
         
+        // Handle featured post - check if it exists
         $featuredPost = Blog::when(Schema::hasColumn('blogs', 'is_featured'), function($query) {
             $query->where('is_featured', true);
         })
@@ -45,6 +46,11 @@ class PublicBlogController extends Controller
         })
         ->orderBy('created_at', 'desc')
         ->first();
+
+        // If no featured post, use the latest post
+        if (!$featuredPost) {
+            $featuredPost = Blog::latest()->first();
+        }
         
         $relatedPosts = Blog::where('category', $blog->category)
             ->where('id', '!=', $blog->id)
@@ -69,19 +75,28 @@ class PublicBlogController extends Controller
         ));
     }
     
+    /**
+     * Store a new comment for a specific blog post.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Blog  $blog
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function storeComment(Request $request, Blog $blog)
     {
+        // Line 87: Validate the incoming request data
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'comment' => 'required|string|min:5'
         ]);
+
+        // Add the blog_id to the validated data before creating the comment
+        $validated['blog_id'] = $blog->id;
+
+        // Use mass assignment to create the new comment
+        Comment::create($validated);
         
-        Comment::create([
-            'blog_id' => $blog->id,
-            ...$validated
-        ]);
-        
-        return redirect()->back()->with('success', 'Comment added successfully!');
+        return back()->with('success', 'Comment added successfully!');
     }
 }

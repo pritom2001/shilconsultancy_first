@@ -22,7 +22,7 @@
 
         <!-- Add/Edit Blog Form -->
         <div class="bg-[#1a1a1a] p-6 rounded-lg shadow-lg mb-8">
-            <form action="{{ isset($blog) ? route('dashboard.blogs.update', $blog->id) : route('dashboard.blogs.store') }}"
+            <form action="{{ isset($blog) ? route('dashboard.blogs.update', $blog->slug) : route('dashboard.blogs.store') }}"
                 method="POST" enctype="multipart/form-data">
                 @csrf
                 @if (isset($blog))
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="content" class="block text-gray-400 font-semibold mb-2">Content</label>
+                    <label for="content" class="block black font-semibold mb-2">Content</label>
                     <textarea name="content" id="content"
                         class="w-full px-4 py-2 rounded-lg bg-[#2d2d2d] text-gray-200 border border-gray-600 focus:outline-none focus:border-blue-500 min-h-[300px]">{{ $blog->content ?? old('content') }}</textarea>
                 </div>
@@ -110,14 +110,14 @@
                             <td class="p-4">{{ $blogItem->category }}</td>
                             <td class="p-4">{{ $blogItem->created_at->format('M d, Y') }}</td>
                             <td class="p-4 flex space-x-2">
-                                <a href="{{ route('dashboard.blogs.edit', $blogItem->id) }}"
+                                <a href="{{ route('dashboard.blogs.edit', $blogItem->slug) }}"
                                     class="text-blue-500 hover:text-blue-400 transition-colors duration-200">Edit</a>
-                                <form action="{{ route('dashboard.blogs.destroy', $blogItem->id) }}" method="POST"
-                                    onsubmit="return confirm('Are you sure you want to delete this blog?');">
+                                <button type="button" class="text-red-500 hover:text-red-400 transition-colors duration-200 delete-blog-btn" data-blog-slug="{{ $blogItem->slug }}">
+                                    Delete
+                                </button>
+                                <form id="delete-form-{{ $blogItem->slug }}" action="{{ route('dashboard.blogs.destroy', $blogItem->slug) }}" method="POST" style="display: none;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit"
-                                        class="text-red-500 hover:text-red-400 transition-colors duration-200">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -128,6 +128,18 @@
                     @endforelse
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-[#1a1a1a] p-8 rounded-lg shadow-2xl w-full max-w-sm mx-4">
+            <h3 class="text-xl font-bold text-white mb-4">Confirm Deletion</h3>
+            <p class="text-gray-300 mb-6">Are you sure you want to delete this blog post? This action cannot be undone.</p>
+            <div class="flex justify-end space-x-4">
+                <button type="button" id="cancel-delete" class="px-4 py-2 rounded-lg text-gray-400 border border-gray-600 hover:bg-gray-700 transition-colors">Cancel</button>
+                <button type="button" id="confirm-delete" class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors">Delete</button>
+            </div>
         </div>
     </div>
 @endsection
@@ -148,6 +160,9 @@
             const categories = @json($categories);
             const categorySelect = document.getElementById('category');
             const subcategorySelect = document.getElementById('subcategory');
+            
+            // Get the current subcategory to be selected, prioritizing 'old' data after a validation failure.
+            const currentSubcategory = "{{ old('subcategory') ?? ($blog->subcategory ?? '') }}";
 
             const updateSubcategories = (selectedCategory) => {
                 subcategorySelect.innerHTML = '<option value="">Select Subcategory</option>';
@@ -156,8 +171,7 @@
                         const option = document.createElement('option');
                         option.value = sub;
                         option.textContent = sub;
-                        // Pre-select the subcategory if editing
-                        const currentSubcategory = "{{ $blog->subcategory ?? '' }}";
+                        // Pre-select the subcategory if editing or after a validation error
                         if (sub === currentSubcategory) {
                             option.selected = true;
                         }
@@ -173,6 +187,33 @@
             // Listen for changes
             categorySelect.addEventListener('change', (e) => {
                 updateSubcategories(e.target.value);
+            });
+
+            // Handle delete confirmation modal
+            const deleteModal = document.getElementById('delete-modal');
+            const confirmDeleteBtn = document.getElementById('confirm-delete');
+            const cancelDeleteBtn = document.getElementById('cancel-delete');
+            let formToSubmit = null;
+
+            document.querySelectorAll('.delete-blog-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const blogSlug = e.target.getAttribute('data-blog-slug');
+                    formToSubmit = document.getElementById(`delete-form-${blogSlug}`);
+                    deleteModal.classList.remove('hidden');
+                    deleteModal.classList.add('flex');
+                });
+            });
+
+            confirmDeleteBtn.addEventListener('click', () => {
+                if (formToSubmit) {
+                    formToSubmit.submit();
+                }
+            });
+
+            cancelDeleteBtn.addEventListener('click', () => {
+                deleteModal.classList.remove('flex');
+                deleteModal.classList.add('hidden');
             });
         });
     </script>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Blog;
+use Illuminate\Support\Facades\Session;
 
 class CommentController extends Controller
 {
@@ -21,19 +22,19 @@ class CommentController extends Controller
         $blog = Blog::where('slug', $slug)->firstOrFail();
 
         // Validate the incoming request data
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'comment' => 'required|string|max:1000',
         ]);
+        
+        // Add the blog_id to the validated data before creating the comment
+        $validatedData['blog_id'] = $blog->id;
 
-        // Create the new comment
-        $comment = new Comment();
-        $comment->name = $request->name;
-        $comment->comment = $request->comment;
-        $comment->blog_id = $blog->id; // Associate the comment with the blog post
-        $comment->save();
+        // Use mass assignment to create the new comment
+        Comment::create($validatedData);
 
         // Redirect back to the article page with a success message
-        return redirect()->route('articles.show', $blog->slug)->with('success', 'Comment added successfully!');
+        return redirect()->route('public.blogs.show', ['blog' => $blog->slug])->with('success', 'Comment added successfully!');
     }
 }

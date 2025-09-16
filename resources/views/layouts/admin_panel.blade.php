@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Favicons -->
     <link rel="icon" type="image/png" href="/Media/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/Media/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/Media/favicon/favicon.ico" />
@@ -115,38 +114,50 @@
 <body class="text-gray-300">
 
     <div class="flex h-screen bg-dark">
-        <!-- Sidebar -->
         <aside class="w-64 flex-shrink-0 hidden md:block bg-dark-2 border-r border-dark-3">
             <div class="flex flex-col h-full">
                 <div class="h-20 flex items-center justify-center border-b border-dark-3">
                     <h1 class="text-2xl font-bold gradient-text">SCS ADMIN</h1>
                 </div>
                 <nav class="flex-1 px-4 py-6 space-y-2">
-                    <a href="{{route('dashboard')}}" class="sidebar-link active flex items-center px-4 py-3 rounded-lg">
+                    <a href="{{ route('dashboard') }}"
+                        class="sidebar-link flex items-center px-4 py-3 rounded-lg {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="fas fa-tachometer-alt w-6 text-center mr-3"></i>
                         <span>Dashboard</span>
                     </a>
-                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg">
+                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg {{ request()->routeIs('pages.*') ? 'active' : '' }}">
                         <i class="fas fa-file-alt w-6 text-center mr-3"></i>
                         <span>Pages</span>
                     </a>
-                    <a href="{{ route('dashboard.blogs.index') }}" class="sidebar-link flex items-center px-4 py-3 rounded-lg">
+                    <a href="{{ route('dashboard.blogs.index') }}"
+                        class="sidebar-link flex items-center px-4 py-3 rounded-lg {{ request()->routeIs('dashboard.blogs.*') ? 'active' : '' }}">
                         <i class="fas fa-pen-nib w-6 text-center mr-3"></i>
                         <span>Blogs</span>
                     </a>
-                    <a href="{{ route('access_control') }}" class="sidebar-link flex items-center px-4 py-3 rounded-lg">
-                        <i class="fas fa-users-cog w-6 text-center mr-3"></i>
-                        <span>Access Control</span>
-                    </a>
-                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg">
+                    @auth
+                        @if (auth()->user()->role === 'admin')
+                            <a href="{{ route('access_control') }}"
+                                class="sidebar-link flex items-center px-4 py-3 rounded-lg {{ request()->routeIs('access_control') ? 'active' : '' }}">
+                                <i class="fas fa-users-cog w-6 text-center mr-3"></i>
+                                <span>Access Control</span>
+                            </a>
+                        @else
+                            <a href="{{ route('unauthorized.access') }}"
+                                class="sidebar-link flex items-center px-4 py-3 rounded-lg {{ request()->routeIs('unauthorized.access') ? 'active' : '' }}">
+                                <i class="fas fa-users-cog w-6 text-center mr-3"></i>
+                                <span>Access Control</span>
+                            </a>
+                        @endif
+                    @endauth
+                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg {{ request()->routeIs('sitemap.*') ? 'active' : '' }}">
                         <i class="fas fa-sitemap w-6 text-center mr-3"></i>
                         <span>Sitemap</span>
                     </a>
-                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg">
+                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg {{ request()->routeIs('seo.*') ? 'active' : '' }}">
                         <i class="fas fa-chart-line w-6 text-center mr-3"></i>
                         <span>SEO</span>
                     </a>
-                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg">
+                    <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg {{ request()->routeIs('settings.*') ? 'active' : '' }}">
                         <i class="fas fa-cogs w-6 text-center mr-3"></i>
                         <span>Global Settings</span>
                     </a>
@@ -161,9 +172,7 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
-            <!-- Header -->
             <header class="h-20 flex items-center justify-between px-6 bg-dark-2 border-b border-dark-3">
                 <div class="flex items-center">
                     <button class="md:hidden mr-4 text-gray-400">
@@ -202,18 +211,15 @@
                         {{-- Optional dropdown icon --}}
                         <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
                     </div>
-
                 </div>
             </header>
 
-            <!-- Page Content -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-dark p-6">
                 @yield('content')
             </main>
         </div>
     </div>
 
-    <!-- Scripts pushed by child views -->
     @stack('scripts')
 
     <script>

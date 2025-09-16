@@ -21,7 +21,7 @@
                         </div>
                         <div>
                             <p class="text-gray-400 text-sm">Total Posts</p>
-                            <p class="text-2xl font-bold text-white">6</p>
+                            <p class="text-2xl font-bold text-white">{{ $blogs->count() }}</p>
                         </div>
                     </div>
                     <div class="card-bg p-6 rounded-xl flex items-center space-x-4">
@@ -30,7 +30,7 @@
                         </div>
                         <div>
                             <p class="text-gray-400 text-sm">Comments</p>
-                            <p class="text-2xl font-bold text-white">15</p>
+                            <p class="text-2xl font-bold text-white">{{ $blogs->sum('comments_count') }}</p>
                         </div>
                     </div>
                     <div class="card-bg p-6 rounded-xl flex items-center space-x-4">
@@ -62,26 +62,26 @@
                                 <thead>
                                     <tr>
                                         <th class="p-3">Title</th>
+                                        <th class="p-3">Category</th>
                                         <th class="p-3">Date</th>
                                         <th class="p-3">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse($blogs->take(5) as $blog)
                                     <tr>
-                                        <td class="p-3 border-t border-dark-3">5 SEO Trends to Watch</td>
-                                        <td class="p-3 border-t border-dark-3">Sept 08, 2025</td>
-                                        <td class="p-3 border-t border-dark-3"><a href="#" class="text-cyan-400 hover:underline">Edit</a></td>
+                                        <td class="p-3 border-t border-dark-3">{{ $blog->title }}</td>
+                                        <td class="p-3 border-t border-dark-3">{{ $blog->category }}</td>
+                                        <td class="p-3 border-t border-dark-3">{{ $blog->created_at->format('M d, Y') }}</td>
+                                        <td class="p-3 border-t border-dark-3">
+                                            <a href="{{ route('dashboard.blogs.edit', $blog->slug) }}" class="text-cyan-400 hover:underline">Edit</a>
+                                        </td>
                                     </tr>
-                                     <tr>
-                                        <td class="p-3 border-t border-dark-3">The Rise of Brutalism</td>
-                                        <td class="p-3 border-t border-dark-3">Sept 01, 2025</td>
-                                        <td class="p-3 border-t border-dark-3"><a href="#" class="text-cyan-400 hover:underline">Edit</a></td>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4" class="p-3 border-t border-dark-3 text-center text-gray-400">No blog posts found</td>
                                     </tr>
-                                     <tr>
-                                        <td class="p-3 border-t border-dark-3">Optimize Your Checkout</td>
-                                        <td class="p-3 border-t border-dark-3">Aug 25, 2025</td>
-                                        <td class="p-3 border-t border-dark-3"><a href="#" class="text-cyan-400 hover:underline">Edit</a></td>
-                                    </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
@@ -91,14 +91,38 @@
                      <div class="card-bg p-6 rounded-xl">
                         <h3 class="text-xl font-bold text-white mb-4">Recent Comments</h3>
                         <div class="space-y-4">
+                            @php
+                                $recentComments = [];
+                                // Collect recent comments from all blogs
+                                foreach ($blogs as $blog) {
+                                    foreach ($blog->comments->take(2) as $comment) {
+                                        $recentComments[] = [
+                                            'blog' => $blog,
+                                            'comment' => $comment
+                                        ];
+                                    }
+                                }
+                                // Sort by comment creation date and take the latest 2
+                                usort($recentComments, function($a, $b) {
+                                    return $b['comment']->created_at <=> $a['comment']->created_at;
+                                });
+                                $recentComments = array_slice($recentComments, 0, 2);
+                            @endphp
+                            
+                            @forelse($recentComments as $item)
                             <div class="p-3 rounded-lg bg-dark-3">
-                                <p class="text-sm text-white"><strong>Jane Smith</strong> on <a href="#" class="text-cyan-400">5 SEO Trends...</a></p>
-                                <p class="text-xs text-gray-400 mt-1">"Great insights! The section on E-E-A-T is particularly important..."</p>
+                                <p class="text-sm text-white">
+                                    <strong>{{ $item['comment']->name }}</strong> on 
+                                    <a href="{{ route('public.blogs.show', $item['blog']->slug) }}" class="text-cyan-400">{{ Str::limit($item['blog']->title, 20) }}...</a>
+                                </p>
+                                <p class="text-xs text-gray-400 mt-1">"{{ Str::limit($item['comment']->content, 60) }}"</p>
+                                <p class="text-xs text-gray-500 mt-2">{{ $item['comment']->created_at->diffForHumans() }}</p>
                             </div>
-                             <div class="p-3 rounded-lg bg-dark-3">
-                                <p class="text-sm text-white"><strong>Alex Chen</strong> on <a href="#" class="text-cyan-400">5 SEO Trends...</a></p>
-                                <p class="text-xs text-gray-400 mt-1">"Really useful article. The rise of zero-click searches..."</p>
+                            @empty
+                            <div class="p-3 rounded-lg bg-dark-3">
+                                <p class="text-sm text-gray-400">No comments yet</p>
                             </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>

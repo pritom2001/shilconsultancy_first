@@ -1,121 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ecommerce Development in Bangladesh | Grow Your Business Online</title>
-<meta name="description" content="Top social media marketing agency in Bangladesh. We boost engagement, increase followers, and drive sales through Facebook, Instagram, LinkedIn marketing. Get a free strategy session today.">
-<meta name="keywords" content="Ecommerce Development in Bangladesh, SMM services, Facebook marketing Bangladesh, Instagram ads, LinkedIn marketing, social media management, content marketing Bangladesh">
-  @vite(['resources/css/ecommerce-devlopment.css', 'resources/js/ecommerce-devlopment.js'])
-@vite(['resources/css/app.css', 'resources/js/app.js'])
-<!-- Canonical URL -->
-<link rel="canonical" href="https://www.shilconsultancy.com/social-media-marketing-bangladesh.html">
+@extends('layouts.template')
 
-<!-- Open Graph/Social Media Meta Tags -->
-<meta property="og:title" content="Social Media Marketing in Bangladesh | Grow Your Business Online">
-<meta property="og:description" content="Top social media marketing agency in Bangladesh. We boost engagement, increase followers, and drive sales through targeted social campaigns.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.shilconsultancy.com/social-media-marketing-bangladesh.html">
-<meta property="og:image" content="https://www.shilconsultancy.com/images/social-media-preview.jpg">
-<meta property="og:site_name" content="Shil Consultancy Services">
+@section('title', 'Ecommerce Devlopment')
 
-<!-- Twitter Card Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Social Media Marketing in Bangladesh | Grow Your Business Online">
-<meta name="twitter:description" content="Top social media marketing agency in Bangladesh. We boost engagement, increase followers, and drive sales through targeted social campaigns.">
-<meta name="twitter:image" content="https://www.shilconsultancy.com/images/social-media-preview.jpg">
-
-<!-- Schema Markup for Digital Marketing Service -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Shil Consultancy Services",
-  "image": "https://www.shilconsultancy.com/images/logo.jpg",
-  "@id": "https://www.shilconsultancy.com/social-media-marketing-bangladesh.html",
-  "url": "https://www.shilconsultancy.com/social-media-marketing-bangladesh.html",
-  "telephone": "+8801768013249",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Nasirabad",
-    "addressLocality": "Chittagong",
-    "postalCode": "4000",
-    "addressCountry": "BD"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 23.8103,
-    "longitude": 90.4125
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "opens": "09:00",
-    "closes": "18:00"
-  },
-  "serviceType": "Social Media Marketing",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Social Media Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Social Media Strategy Development"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Content Creation & Management"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Paid Social Advertising"
-        }
-      }
-    ]
-  },
-  "sameAs": [
-    "https://www.facebook.com/shilconsultancyukltd",
-    "https://www.instagram.com/shilconsultancy/",
-    "https://x.com/shilconsultancy",
-    "https://www.linkedin.com/company/shilconsultancy/"
-  ]
-}
-</script>
-<!-- Favicon Section -->
-<link rel="icon" type="image/png" href="/Media/favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/Media/favicon/favicon.svg" />
-<link rel="shortcut icon" href="/Media/favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/Media/favicon/apple-touch-icon.png" />
-<link rel="manifest" href="/Media/favicon/site.webmanifest" />
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-</head>
-<body class="bg-gray-50">
-   @include('partials.header')
-    
-
-    <!-- Breadcrumbs -->
-    <div class="container mx-auto px-4 py-3 text-sm text-gray-600 pt-24">
+@section('content')
+<!-- Breadcrumbs -->
+    <div class="container mx-auto px-4 py-3 text-sm text-white pt-24">
         <a href="index.html" class="hover:text-indigo-600">Home</a> / 
         <a href="index.html#services" class="hover:text-indigo-600">Services</a> / 
-        <span class="text-gray-800">Ecommerce Development in Bangladesh</span>
+        <span class="text-gray-500">Ecommerce Development in Bangladesh</span>
     </div>
 
     <!-- Main Product Section -->
@@ -794,7 +686,6 @@
     </div>
 </div>
 </main>
-
 <!-- Sticky Add to Cart (Mobile) -->
 <div class="sticky-add-to-cart bg-white shadow-lg p-4 border-t border-gray-200">
     <div class="container mx-auto flex items-center justify-between">
@@ -810,24 +701,5 @@
         </button>
     </div>
 </div>
-
-    @include('partials.footer')
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/8801768013249" target="_blank" 
-   class="fixed bottom-[96px] right-8 w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 group z-50 animate-bounce">
-   <i class="fab fa-whatsapp text-2xl"></i>
-   <span class="absolute -top-10 -right-2 bg-gray-900 text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md">
-       Chat with us
-   </span>
-</a>
-
-<!-- Back to Top Button -->
-<a href="#" class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-purple-600 to-cyan-500 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition duration-300 z-50">
-    <i class="fas fa-arrow-up"></i>
-</a>
-
-<script>
-    
-</script>
-</body>
-</html>
+   
+@endsection

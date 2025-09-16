@@ -30,13 +30,11 @@ use App\Http\Controllers\AboutUsController;
 // These routes do not require authentication.
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Blog Routes
-Route::controller(PublicBlogController::class)->group(function () {
-    Route::get('/blog', 'index')->name('public.blogs.index');
-    Route::get('/blogs/category/{slug}', 'category')->name('public.blogs.category');
-    Route::get('/articles/{blog:slug}', 'show')->name('public.blogs.show');
-    Route::post('/articles/{blog:slug}/comment', 'storeComment')->name('public.blogs.comment');
-});
+// Public Blog Routes
+Route::get('/blog', [PublicBlogController::class, 'index'])->name('public.blogs.index');
+Route::get('/blog/category/{slug}', [PublicBlogController::class, 'category'])->name('public.blogs.category');
+Route::get('/articles/{blog:slug}', [PublicBlogController::class, 'show'])->name('public.blogs.show');
+Route::post('/articles/{blog:slug}/comment', [PublicBlogController::class, 'storeComment'])->name('public.blogs.comment');
 // Comment Route
 // The blog slug is used to find the correct article
 Route::post('/articles/{blog:slug}/comments', [CommentController::class, 'store'])->name('comments.store');
@@ -151,3 +149,11 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     // Using the BlogsController from the root App\Http\Controllers namespace
      Route::resource('blogs', AdminBlogController::class)->names('dashboard.blogs');
 });
+Route::get('/dashboard/unauthorized-access', function () {
+    return view('dashboard.unauthorized');
+})->name('unauthorized.access')->middleware('auth');
+
+// Add this route to your web.php file
+
+
+Route::post('/dashboard/blogs/upload', [AdminBlogController::class, 'upload'])->name('dashboard.blogs.upload');
