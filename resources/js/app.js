@@ -172,31 +172,19 @@ import './bootstrap';
             }
         });
 
-//  swiper jsx
-const swiper = new Swiper(".mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    loop: true,                 
-    autoplay: {
-        delay: 3000,           
-        disableOnInteraction: false,
-    },
-    pagination: { el: ".swiper-pagination", clickable: true },
-    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-    breakpoints: {
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 }
-    }
-});
-// work slider
+//swiper js
 var swiper_work = new Swiper(".swiper_work", {
   slidesPerView: 1,
   spaceBetween: 20,
   loop: true,
+  speed: 7000, 
   autoplay: {
-    delay: 3000, 
-    disableOnInteraction: false, 
+    delay: 0, 
+    disableOnInteraction: false,
   },
+  freeMode: true, 
+  freeModeMomentum: false, 
+  allowTouchMove: false, 
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -214,5 +202,6 @@ var swiper_work = new Swiper(".swiper_work", {
     }
   }
 });
+
 
 

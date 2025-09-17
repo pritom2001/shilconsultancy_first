@@ -7,10 +7,9 @@
     <title>Shil Consultancy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <!-- Include Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 </head>
 
@@ -45,14 +44,12 @@
                     <a href="#contact"
                         class="btn-glow px-8 py-3 bg-gradient-to-r from-purple-600 to-cyan-500 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition duration-300">Get
                         Started</a>
-                    <a href="#services"
-                        class="btn-glow px-8 py-3 border border-white text-white rounded-full font-semibold hover:bg-white hover:bg-opacity-10 transition duration-300">Our
-                        Services</a>
+                 
                 </div>
             </div>
             <div class="md:w-1/2 relative">
                 <div class="floating">
-                    <div class="placeholder-img w-full h-96 max-w-lg mx-auto flex items-center justify-center">
+                    <div class=" w-full h-96 max-w-lg mx-auto flex items-center justify-center">
                         <div>
                             <img src="{{ asset('images/shil_consultancy _services _hero_image.webp') }}"
                                 alt="Professional digital marketing services in Chittagong" loading="lazy"
@@ -90,12 +87,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <a href="{{ route('services.web') }}" class="block h-full">
 
-                    <div class="service-card h-full rounded-xl p-8 transform transition-all duration-500 hover:glow">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-purple-500 to-cyan-400 rounded-xl flex items-center justify-center mb-6">
-                            <i class="fas fa-code text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Web Design & Development</h3>
+                    <div class="service-card h-full rounded-xl p-8 transform transition-all duration-500 hover:glow ">
+                        <!--<div-->
+                        <!--    class="w-16 h-16  rounded-xl flex items-center justify-center mb-6">-->
+                        <!--    <i class="fas fa-code text-4xl gradient-text"></i>-->
+                        <!--</div>-->
+                        <h3 class="text-2xl font-bold mb-4 mt-6">Web Design & Development</h3>
                         <p class="text-gray-300 mb-6">Custom websites that combine stunning design with seamless
                             functionality to showcase your brand effectively.</p>
                         <div class="flex flex-wrap gap-2">
@@ -112,11 +109,11 @@
 
                 <a href="{{ route('services.ecommerce') }}" class="block h-full">
                     <div class="service-card h-full rounded-xl p-8 transform transition-all duration-500 hover:glow">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-cyan-400 to-pink-500 rounded-xl flex items-center justify-center mb-6">
-                            <i class="fas fa-shopping-cart text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">E-Commerce Development</h3>
+                        <!--<div-->
+                        <!--    class="w-16 h-16  rounded-xl flex items-center justify-center mb-6">-->
+                        <!--    <i class="fas fa-shopping-cart text-4xl gradient-text"></i>-->
+                        <!--</div>-->
+                        <h3 class="text-2xl font-bold mb-4 mt-10">E-Commerce Development</h3>
                         <p class="text-gray-300 mb-6">Powerful online stores with seamless checkout, inventory
                             management, and payment integration to boost your sales.</p>
                         <div class="flex flex-wrap gap-2">
@@ -134,11 +131,11 @@
                 <a href="{{ route('services.smm') }}" class="block h-full">
                     <div
                         class="service-card h-full rounded-xl p-8 transform transition-all duration-500 hover:glow group-hover:-translate-y-1">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl flex items-center justify-center mb-6">
-                            <i class="fas fa-bullseye text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 group-hover:text-purple-400 transition-colors">Social Media
+                        <!--<div-->
+                        <!--    class="w-16 h-16  rounded-xl flex items-center justify-center mb-6">-->
+                        <!--    <i class="fas fa-bullseye text-4xl gradient-text"></i>-->
+                        <!--</div>-->
+                        <h3 class="text-2xl font-bold mb-4 group-hover:text-purple-400 transition-colors mt-10">Social Media
                             Marketing</h3>
                         <p class="text-gray-300 mb-6 group-hover:text-gray-100 transition-colors">Data-driven strategies
                             to increase your social media visibility, attract quality leads, and convert them into
@@ -160,11 +157,11 @@
                 <a href="{{ route('services.content') }}" class="block h-full">
 
                     <div class="service-card h-full rounded-xl p-8 transform transition-all duration-500 hover:glow">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-pink-500 rounded-xl flex items-center justify-center mb-6">
-                            <i class="fas fa-photo-film text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Content Creation</h3>
+                        <!--<div-->
+                        <!--    class="w-16 h-16  rounded-xl flex items-center justify-center mb-6">-->
+                        <!--    <i class="fas fa-photo-film text-4xl gradient-text"></i>-->
+                        <!--</div>-->
+                        <h3 class="text-2xl font-bold mb-4 mt-10">Content Creation</h3>
                         <p class="text-gray-300 mb-6">Engaging content that tells your brand story, connects with your
                             audience, and drives meaningful interactions.</p>
                         <div class="flex flex-wrap gap-2">
@@ -180,11 +177,11 @@
 
                 <a href="{{ route('services.brand') }}" class="block h-full">
                     <div class="service-card h-full rounded-xl p-8 transform transition-all duration-500 hover:glow">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-xl flex items-center justify-center mb-6">
-                            <i class="fas fa-chess-queen text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Brand Strategy</h3>
+                        <!--<div-->
+                        <!--    class="w-16 h-16  rounded-xl flex items-center justify-center mb-6">-->
+                        <!--    <i class="fas fa-chess-queen text-4xl gradient-text"></i>-->
+                        <!--</div>-->
+                        <h3 class="text-2xl font-bold mb-4 mt-10">Brand Strategy</h3>
                         <p class="text-gray-300 mb-6">Comprehensive branding solutions that define your identity and
                             position you as an industry leader.</p>
                         <div class="flex flex-wrap gap-2">
@@ -200,11 +197,11 @@
 
                 <a href="{{ route('services.seo') }}" class="block h-full">
                     <div class="service-card h-full rounded-xl p-8 transform transition-all duration-500 hover:glow">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl flex items-center justify-center mb-6">
-                            <i class="fas fa-chart-line text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Search Engine Optimization</h3>
+                        <!--<div-->
+                        <!--    class="w-16 h-16  rounded-xl flex items-center justify-center mb-6">-->
+                        <!--    <i class="fas fa-chart-line text-4xl gradient-text"></i>-->
+                        <!--</div>-->
+                        <h3 class="text-2xl font-bold mb-4 mt-6">Search Engine Optimization</h3>
                         <p class="text-gray-300 mb-6">Data-driven insights and continuous optimization of website to
                             maximize your digital performance and ROI.</p>
                         <div class="flex flex-wrap gap-2">
@@ -232,8 +229,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0 relative">
-                    <div class="relative">
-                        <div class="placeholder-img w-full h-96 max-w-lg mx-auto flex items-center justify-center">
+                    <div class="relative floating">
+                        <div class=" w-full h-96 max-w-lg mx-auto flex items-center justify-center">
                             <div>
                                 <img src="{{ asset('images/aboutus.webp') }}"
                                     alt="Astronaut with purple gradient helmet in a digital marketing and web design company workspace">
@@ -261,8 +258,8 @@
                     <div class="grid grid-cols-2 gap-6 mb-8">
                         <div class="flex items-center">
                             <div
-                                class="w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-400 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-rocket text-white"></i>
+                                class="w-12 h-12  rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-rocket text-white text-3xl  gradient-text"></i>
                             </div>
                             <div>
                                 <h4 class="text-xl font-bold text-white">Innovation</h4>
@@ -271,8 +268,8 @@
                         </div>
                         <div class="flex items-center">
                             <div
-                                class="w-12 h-12 bg-gradient-to-r from-cyan-400 to-pink-500 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-heart text-white"></i>
+                                class="w-12 h-12  rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-heart  text-3xl  gradient-text"></i>
                             </div>
                             <div>
                                 <h4 class="text-xl font-bold text-white">Passion</h4>
@@ -281,8 +278,8 @@
                         </div>
                         <div class="flex items-center">
                             <div
-                                class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-chart-line text-white"></i>
+                                class="w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-chart-line text-3xl  gradient-text"></i>
                             </div>
                             <div>
                                 <h4 class="text-xl font-bold text-white">Results</h4>
@@ -293,8 +290,8 @@
                              <div class="flex items-center">
                                 <a href="{{route('aboutUs.team-member')}}">
                             <div
-                                class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-pink-500 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-users text-white"></i>
+                                class="w-12 h-12  rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-users text-3xl  gradient-text"></i>
                             </div>
                             <div>
                                 <a href="{{route('aboutUs.team-member')}}"> <h4 class="text-xl font-bold text-white">Team</h4></a>
@@ -530,9 +527,7 @@
   </div>
 
 
-  <!-- Add Navigation -->
-  {{-- <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div> --}}
+ 
 </div>
 
 
@@ -554,78 +549,14 @@
                 <p class="text-xl text-gray-300 max-w-3xl mx-auto">What our clients say about working with us</p>
             </div>
 
-            {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="service-card rounded-xl p-8 transform transition-all duration-500 hover:glow">
-                    <div class="flex items-center mb-6">
-                        <div class="testimonial-img w-12 h-12 flex items-center justify-center mr-4">
-                            SJ
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-white">Sarah Johnson</h4>
-                            <p class="text-gray-400 text-sm">CEO, Imperial Lash</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-6">"Shil Consultancy Services transformed our online presence
-                        completely. Our website traffic increased by 200% within three months of working with them."</p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-
-                <div class="service-card rounded-xl p-8 transform transition-all duration-500 hover:glow">
-                    <div class="flex items-center mb-6">
-                        <div class="testimonial-img w-12 h-12 flex items-center justify-center mr-4">
-                            MC
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-white">Michael Chen</h4>
-                            <p class="text-gray-400 text-sm">Marketing Director, Suger Comb</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-6">"Their digital marketing strategies are next-level. We've seen a
-                        consistent 30% month-over-month growth in our online sales since partnering with them."</p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-
-                <div class="service-card rounded-xl p-8 transform transition-all duration-500 hover:glow">
-                    <div class="flex items-center mb-6">
-                        <div class="testimonial-img w-12 h-12 flex items-center justify-center mr-4">
-                            ER
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold text-white">Emily Rodriguez</h4>
-                            <p class="text-gray-400 text-sm">Founder, Aloe'Deeki</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-6">"The e-commerce platform they built for us is stunning and performs
-                        flawlessly. Our conversion rates have never been higher!"</p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </div> --}}
-
-            {{-- slider --}}
+           
+                                                              {{-- slider --}}
             <!-- Swiper Container -->
-<div class="swiper mySwiper py-8">
+<div class="swiper_work py-8 overflow-visible">
     <div class="swiper-wrapper">
         <!-- Slide 1 -->
         <div class="swiper-slide">
-            <div class="service-card rounded-xl p-8 transform transition-all duration-500 hover:glow">
+            <div class="service-card rounded-xl p-8 transform transition-all duration-500 hover:glow ">
                 <div class="flex items-center mb-6">
                     <div class="testimonial-img w-12 h-12 flex items-center justify-center mr-4">SJ</div>
                     <div>
@@ -692,12 +623,7 @@
         </div>
     </div>
 
-    <!-- Optional Swiper Pagination -->
-    {{-- <div class="swiper-pagination"></div> --}}
 
-    <!-- Optional Navigation -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
 </div>
         </div>
 
@@ -718,8 +644,8 @@
                     <div class="space-y-6 mb-10">
                         <div class="flex items-center">
                             <div
-                                class="w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-400 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-white"></i>
+                                class="w-12 h-12  rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-3xl gradient-text"></i>
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-white">Email Us</h4>
@@ -730,8 +656,8 @@
 
                         <div class="flex items-center">
                             <div
-                                class="w-12 h-12 bg-gradient-to-r from-cyan-400 to-pink-500 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-phone text-white"></i>
+                                class="w-12 h-12  rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-3xl gradient-text"></i>
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-white">Call Us</h4>
@@ -742,14 +668,13 @@
 
                         <div class="flex items-center">
                             <div
-                                class="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-white"></i>
+                                class="w-12 h-12  rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-3xl gradient-text"></i>
                             </div>
                             <div>
                                 <h4 class="text-lg font-bold text-white">Head Office</h4>
-                                <p class="text-gray-400">Golpahar, Chittagong, Bangladesh</p>
-                                <h4 class="text-lg font-bold text-white">Branch office</h4>
-                                <p class="text-gray-400">Birmingham, United Kingdom</p>
+                                <p class="text-gray-400">1054, 5th floor, Rahim manson, Suborna R/A,</p>
+                                <p class="text-gray-400">Golpahar, Chittagong, Chittagong, Bangladesh</p>
                             </div>
                         </div>
                     </div>
