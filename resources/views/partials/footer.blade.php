@@ -22,7 +22,7 @@
                 <ul class="space-y-2">
                     <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
                     <li><a href="#work" class="text-gray-400 hover:text-white">Our Work</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                    <li><a href="{{ route('careers') }}" class="text-gray-400 hover:text-white">Careers</a></li>
                     <li><a href="{{route('public.blogs.index')}}" class="text-gray-400 hover:text-white">Blog</a></li>
                     
           
@@ -33,9 +33,9 @@
             <div>
                 <h4 class="text-lg font-bold text-white mb-4">Legal</h4>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                    <li><a href="{{ route('privacy.policy') }}" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    <li><a href="{{ route('terms.of.service') }}" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    <li><a href="{{ route('cookie.policy') }}" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
                 </ul>
             </div>
         </div>

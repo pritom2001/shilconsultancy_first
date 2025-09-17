@@ -157,3 +157,14 @@ Route::get('/dashboard/unauthorized-access', function () {
 
 
 Route::post('/dashboard/blogs/upload', [AdminBlogController::class, 'upload'])->name('dashboard.blogs.upload');
+
+// Career Page Route
+Route::view('/careers', 'career')->name('careers');
+
+// Privacy Policy Route
+Route::view('/privacy-policy', 'privacy-policy')->name('privacy.policy');
+
+// Terms of Service Route
+Route::view('/terms-of-service', 'terms-of-service')->name('terms.of.service');
+// Cookie Policy Route
+Route::view('/cookie-policy', 'cookie-policy')->name('cookie.policy');
