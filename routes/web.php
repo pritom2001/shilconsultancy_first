@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -168,3 +169,6 @@ Route::view('/privacy-policy', 'privacy-policy')->name('privacy.policy');
 Route::view('/terms-of-service', 'terms-of-service')->name('terms.of.service');
 // Cookie Policy Route
 Route::view('/cookie-policy', 'cookie-policy')->name('cookie.policy');
+
+//send message emails
+Route::post('/send-message', [ContactController::class, 'send'])->name('send.message');

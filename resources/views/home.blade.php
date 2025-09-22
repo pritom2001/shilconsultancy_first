@@ -700,7 +700,8 @@
                 </div>
 
                 <div class="md:w-1/2 md:pl-12">
-                    <form id="contact-form" class="service-card rounded-xl p-8">
+                    <form action="{{ route('send.message') }}" method="POST" class="service-card rounded-xl p-8 bg-gray-900 shadow-lg">
+                         @csrf 
                         <h3 class="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
 
                         <div class="mb-6">
